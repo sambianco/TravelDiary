@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 @Composable
 fun AppBar(
     title: String,
-    onSettingsClick: () -> Unit = {},
+    onSettingsClick: (() -> Unit)? = null,
     onBackClick: (() -> Unit)? = null,
 ) {
     CenterAlignedTopAppBar(
@@ -45,8 +45,8 @@ fun AppBar(
                     Icon(Icons.Outlined.Search, contentDescription = "Search")
                 }
             }
-            if (title != "Settings") {
-                IconButton(onClick = { onSettingsClick }) {
+            if (onSettingsClick != null) {
+                IconButton(onClick = onSettingsClick) { // 4. Niente graffe inutili qui!
                     Icon(Icons.Outlined.Settings, "Settings")
                 }
             }
