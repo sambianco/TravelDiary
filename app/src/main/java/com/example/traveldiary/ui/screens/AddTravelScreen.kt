@@ -48,12 +48,9 @@ fun AddTravelScreen(navController: NavHostController) {
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
-                onClick = {}
+                onClick = { navController.navigate(Screen.Home) }
             ) {
-                IconButton(onClick = { navController.navigate(Screen.Home) }) {
-                    Icon(Icons.Outlined.Check, "Add Travel")
-                }
-
+                Icon(Icons.Outlined.Check, "Add Travel")
             }
         },
     ) { contentPadding ->
