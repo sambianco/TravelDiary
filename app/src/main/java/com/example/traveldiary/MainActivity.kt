@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.traveldiary.ui.screens.AddTravelScreen
 import com.example.traveldiary.ui.screens.HomeScreen
 import com.example.traveldiary.ui.screens.SettingsScreen
@@ -23,10 +24,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TravelDiaryTheme {
-                HomeScreen()
-                // TravelDetailsScreen()
-                // AddTravelScreen()
-                // SettingsScreen()
+                val navController = rememberNavController()
+                NavGraph(navController)
             }
         }
     }

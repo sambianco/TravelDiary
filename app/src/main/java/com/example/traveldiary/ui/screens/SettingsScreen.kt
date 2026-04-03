@@ -18,10 +18,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.traveldiary.ui.composables.AppBar
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(navController: NavHostController) {
     Scaffold(
         topBar = { AppBar(title = "Settings") }
     ) { contentPadding ->

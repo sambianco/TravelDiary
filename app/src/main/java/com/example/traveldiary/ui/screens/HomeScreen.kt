@@ -33,22 +33,29 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.example.traveldiary.Screen
 import com.example.traveldiary.ui.composables.AppBar
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     val items = (1..20).map { "Item n°$it" }
+    val travelIds = (1..20).toList()
 
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
-                onClick = { /*TODO*/ }
+                onClick = { navController.navigate(Screen.AddTravel) }
             ) {
                 Icon(Icons.Outlined.Add, "Add Travel")
             }
         },
-        topBar = { AppBar(title = "TravelDiary") }
+        topBar = {
+            AppBar(
+                title = "TravelDiary",
+                onSettingsClick = { navController.navigate(Screen.Settings) }
+                ) }
     ) { contentPadding ->
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -57,16 +64,24 @@ fun HomeScreen() {
             contentPadding = PaddingValues(8.dp, 8.dp, 8.dp, 80.dp),
             modifier =  Modifier.padding(contentPadding)
         ) {
-            items(items) { item -> TravelItem(item) }
+            items(travelIds) { id ->
+                TravelItem(
+                    travelId = id,
+                    // Definiamo qui cosa succede al click
+                    onItemClick = {
+                        navController.navigate(Screen.TravelDetails(travelId = id))
+                    }
+                )
+            }
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TravelItem(item: String) {
+fun TravelItem(travelId: Int, onItemClick: () -> Unit) {
     Card(
-        onClick = { /*TODO*/ },
+        onClick = onItemClick,
         modifier = Modifier
             .size(150.dp)
             .fillMaxWidth(),
@@ -94,10 +109,9 @@ fun TravelItem(item: String) {
             )
             Spacer(Modifier.size(8.dp))
             Text(
-                item,
+                "Viaggio n°$travelId",
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center
+                style = MaterialTheme.typography.bodyMedium
             )
         }
     }

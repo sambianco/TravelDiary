@@ -15,7 +15,10 @@ import androidx.compose.ui.text.font.FontWeight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppBar(title: String) {
+fun AppBar(
+    title: String,
+    onSettingsClick: () -> Unit = {}
+) {
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -25,12 +28,12 @@ fun AppBar(title: String) {
         },
         actions = {
             if (title == "TravelDiary") {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { }) {
                     Icon(Icons.Outlined.Search, contentDescription = "Search")
                 }
             }
             if (title != "Settings") {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { onSettingsClick }) {
                     Icon(Icons.Outlined.Settings, "Settings")
                 }
             }

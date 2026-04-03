@@ -31,16 +31,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.traveldiary.ui.composables.AppBar
 
 @Composable
-fun AddTravelScreen() {
+fun AddTravelScreen(navController: NavHostController) {
     Scaffold(
         topBar = { AppBar(title = "Add Travel") },
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
-                onClick = { /*TODO*/ }
+                onClick = {}
             ) {
                 Icon(Icons.Outlined.Check, "Add Travel")
             }
