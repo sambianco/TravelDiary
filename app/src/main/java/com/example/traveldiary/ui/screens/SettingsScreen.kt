@@ -24,7 +24,11 @@ import com.example.traveldiary.ui.composables.AppBar
 @Composable
 fun SettingsScreen(navController: NavHostController) {
     Scaffold(
-        topBar = { AppBar(title = "Settings") }
+        topBar = { AppBar(
+            title = "Settings",
+            onBackClick = {navController.popBackStack()}
+            )
+        }
     ) { contentPadding ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

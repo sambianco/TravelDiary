@@ -55,7 +55,8 @@ fun HomeScreen(navController: NavHostController) {
             AppBar(
                 title = "TravelDiary",
                 onSettingsClick = { navController.navigate(Screen.Settings) }
-                ) }
+                )
+        }
     ) { contentPadding ->
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),

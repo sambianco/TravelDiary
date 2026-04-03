@@ -1,6 +1,7 @@
 package com.example.traveldiary.ui.composables
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -17,7 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 @Composable
 fun AppBar(
     title: String,
-    onSettingsClick: () -> Unit = {}
+    onSettingsClick: () -> Unit = {},
+    onBackClick: (() -> Unit)? = null,
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -25,6 +27,17 @@ fun AppBar(
                 title,
                 fontWeight = FontWeight.Medium,
             )
+        },
+        navigationIcon = {
+            // Se onBackClick non è null, mostriamo l'icona
+            if (onBackClick != null) {
+                IconButton(onClick = onBackClick) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
+                        contentDescription = "Torna indietro"
+                    )
+                }
+            }
         },
         actions = {
             if (title == "TravelDiary") {

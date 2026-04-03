@@ -25,12 +25,18 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.traveldiary.Screen
 import com.example.traveldiary.ui.composables.AppBar
 
 @Composable
 fun TravelDetailsScreen(navController: NavHostController, travelId: Int) {
     Scaffold(
-        topBar = { AppBar(title = "Travel number $travelId Details") },
+        topBar = {
+            AppBar(
+                title = "Travel number $travelId Details",
+                onBackClick = { navController.popBackStack() },
+                onSettingsClick = { navController.navigate(Screen.Settings)} )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,

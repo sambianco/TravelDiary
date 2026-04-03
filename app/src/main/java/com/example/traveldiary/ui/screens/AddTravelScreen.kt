@@ -38,7 +38,13 @@ import com.example.traveldiary.ui.composables.AppBar
 @Composable
 fun AddTravelScreen(navController: NavHostController) {
     Scaffold(
-        topBar = { AppBar(title = "Add Travel") },
+        topBar = {
+            AppBar(
+                title = "Add Travel",
+                onBackClick = { navController.popBackStack() },
+                onSettingsClick = { navController.navigate(Screen.Settings)}
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
